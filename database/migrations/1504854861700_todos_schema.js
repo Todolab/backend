@@ -2,9 +2,9 @@
 
 const Schema = use('Schema')
 
-class TodoItemsSchema extends Schema {
+class TodosSchema extends Schema {
   up () {
-    this.create('todo_items', (table) => {
+    this.create('todos', (table) => {
       table.increments()
       table.string('name')
       table.string('description', 255)
@@ -15,8 +15,8 @@ class TodoItemsSchema extends Schema {
   }
 
   down () {
-    this.drop('todo_items')
+    this.drop('todos')
   }
 }
 
-module.exports = TodoItemsSchema
+module.exports = TodosSchema
