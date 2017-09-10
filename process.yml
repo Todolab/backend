@@ -6,7 +6,5 @@ apps:
       - node_modules
     watch_options:
       usePolling: true
-    env    :
-      NODE_ENV: development
     env_production:
       NODE_ENV: production
