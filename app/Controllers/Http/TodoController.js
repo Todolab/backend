@@ -3,14 +3,20 @@ const Todo = use('App/Models/Todo')
 
 class TodoController {
   async index () {
-    const todo = await Todo.all()
+    let todo = await Todo.all()
+    todo = todo.toJSON()
 
-    return todo.toJSON()
+    // Change completed data type
+    todo.map((item) => {
+      item.completed = Number(item.completed)
+      return item
+    })
+
+    return todo
   }
 
   async store ({request}) {
     const todoData = request.only(['name', 'description'])
-
     const todo = await Todo.create(todoData)
 
     return todo.toJSON()
